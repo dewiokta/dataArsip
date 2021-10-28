@@ -24,8 +24,11 @@
   <title>Data Arsip</title>
   <!-- Favicon -->
   <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
   <!-- Icons -->
   <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
   <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
@@ -33,6 +36,7 @@
   <!-- Argon CSS -->
   <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" />
+  <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -52,19 +56,19 @@
             <!-- Nav items -->
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" href="dashboard.html">
+                <a class="nav-link" href="/home">
                   <i class="ni ni-tv-2 text-primary"></i>
                   <span class="nav-link-text">Dashboard</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="profile.html">
+                <a class="nav-link" href="/profile">
                   <i class="ni ni-single-02 text-yellow"></i>
                   <span class="nav-link-text">About</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{route('arsip.index')}}">
                   <i class="ni ni-bullet-list-67 text-default"></i>
                   <span class="nav-link-text">Tables</span>
                 </a>
@@ -94,7 +98,7 @@
                       <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
                     </span>
                     <div class="media-body  ml-2  d-none d-lg-block">
-                      <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                      <span class="mb-0 text-sm  font-weight-bold">Hi, {{ auth()->user()->name }}</span>
                     </div>
                   </div>
                 </a>
@@ -163,6 +167,34 @@
   <script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script>
+    // delete
+    $(document).on("click", ".swal-6", function(e) {
+      e.preventDefault();
+      let id = $(this).data('user');
+      console.log(id);
+      swal({
+          title: 'Are you sure want to delete this user?',
+          text: 'Once deleted, you will not be able to recover this user!',
+          icon: 'warning',
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            $(this).closest("form").submit()
+            swal('Poof! User has been deleted!', {
+              icon: 'success',
+            });
+          }
+        });
+    });
+  </script>
+
 </body>
 
 </html>

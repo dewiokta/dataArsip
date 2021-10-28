@@ -42,13 +42,22 @@
                                     <div class="text-center text-muted mb-4">
                                         <h1>Login</h1>
                                     </div>
-                                    <form role="form">
+                                    @if (session('status'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('status') }}
+                                    </div>
+                                    @endif
+                                    <form action="{{ route('login') }}" method="POST role="form">
+                                        @csrf
                                         <div class="form-group mb-3">
                                             <div class="input-group input-group-merge input-group-alternative">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                                 </div>
-                                                <input class="form-control" placeholder="Email" type="email">
+                                                <input name="email" class="form-control  @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Email" type="email">
+                                                @error('email')
+                                                <div class="invalid-feedback">{{ $message}}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -56,11 +65,14 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                                 </div>
-                                                <input class="form-control" placeholder="Password" type="password">
+                                                <input name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" type="password">
+                                                @error('password')
+                                                <div class="invalid-feedback">{{ $message}}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="button" class="btn btn-primary my-4">Login</button>
+                                            <button type="submit" class="btn btn-primary my-4">Login</button>
                                         </div>
                                     </form>
                                 </div>

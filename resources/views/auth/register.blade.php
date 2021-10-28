@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Login</title>
+    <title>Register</title>
     <!-- Favicon -->
     <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
@@ -42,13 +42,19 @@
                                     <div class="text-center text-muted mb-4">
                                         <h1>Create Account</h1>
                                     </div>
-                                    <form role="form">
+                                    <form action="{{ route('register') }}" method="POST" role="form">
+                                        @csrf
                                         <div class="form-group">
                                             <div class="input-group input-group-merge input-group-alternative mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                                                 </div>
-                                                <input class="form-control" placeholder="Name" type="text">
+                                                <input name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Name" type="text">
+                                                @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
@@ -56,7 +62,10 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                                 </div>
-                                                <input class="form-control" placeholder="Email" type="email">
+                                                <input name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Email" type="email">
+                                                @error('email')
+                                                <div class="invalid-feedback">{{ $message}}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -64,20 +73,32 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                                 </div>
-                                                <input class="form-control" placeholder="Password" type="password">
+                                                <input name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" type="password" data-indicator="pwindicator">
+                                                @error('password')
+                                                <div class="invalid-feedback">{{ $message}}</div>
+                                                @enderror
                                             </div>
                                         </div>
-                                        <div class="text-center">
-                                            <button type="button" class="btn btn-primary my-4">Register</button>
+                                        <div class="form-group mb-3">
+                                            <div class="input-group input-group-merge input-group-alternative">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                                </div>
+                                                <input name="password_confirmation" class="form-control" placeholder="Password">
+                                            </div>
                                         </div>
-                                    </form>
                                 </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary my-4">Register</button>
+                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- Argon Scripts -->
     <!-- Core -->

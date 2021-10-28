@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ArsipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +17,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
-Route::get('/login', function () {
     return view('auth/login');
 });
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', function () {
+        return view('home', ['users' => User::get(),]);
+    });
+    Route::resource('user', UserController::class);
+
+});
+
+Route::resource('arsip', ArsipController::class);
+Route::get('/profile', function(){
+    return view('/profile');
+});
+
+// Route::get('/table',[ArsipController::class, 'index']);
+// Route::post('/create',[ArsipController::class, 'store']);
 
