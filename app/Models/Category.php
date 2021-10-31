@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function arsips(){
-        return $this->hasMany(Arsip::class,'id_kategori','id');
-    }
+    // public function arsips(){
+    //     return $this->hasMany(Arsip::class,'id_kategori','id');
+    // }
 }

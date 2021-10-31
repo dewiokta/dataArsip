@@ -10,10 +10,10 @@
                 <div class="card card-profile">
                     <img src="../assets/img/theme/img-1-1000x600.jpg" alt="Image placeholder" class="card-img-top">
                     <div class="row justify-content-center">
-                        <div class="col-lg-3 order-lg-2">
+                        <div class="col-lg-3 order-lg-3">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="../assets/img/theme/team-4.jpg" class="rounded-circle">
+                                    <img src="file/dewi.jpg" class="rounded-circle">
                                 </a>
                             </div>
                         </div>
@@ -25,12 +25,14 @@
                             <div class="col">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                     <h5 class="h3">
-                                        Aplikasi Ini Dibuat oleh
                                     </h5>
                                 </div>
                             </div>
                         </div>
                         <div class="text-center">
+                            <h5 class="h3">
+                                Aplikasi Ini Dibuat oleh
+                            </h5>
                             <h5 class="h3">
                                 Dewi Oktavia Efendi<span class="font-weight-light"></span>
                             </h5>
@@ -38,7 +40,7 @@
                                 <i class="ni location_pin mr-2"></i>NIM -- 1931710071
                             </div>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>24 Oktober 2021
+                                <i class="ni business_briefcase-24 mr-2"></i>30 Oktober 2021
                             </div>
                         </div>
                     </div>

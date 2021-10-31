@@ -172,14 +172,19 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <script>
+    $(document).ready(function(){
+      $('#myTable').DataTable();
+    });
+  </script>
+  <script>
     // delete
     $(document).on("click", ".swal-6", function(e) {
       e.preventDefault();
-      let id = $(this).data('user');
+      let id = $(this).data('arsips');
       console.log(id);
       swal({
-          title: 'Are you sure want to delete this user?',
-          text: 'Once deleted, you will not be able to recover this user!',
+          title: 'Are you sure want to delete this data?',
+          text: 'Once deleted, you will not be able to recover this data!',
           icon: 'warning',
           buttons: true,
           dangerMode: true,
@@ -187,7 +192,7 @@
         .then((willDelete) => {
           if (willDelete) {
             $(this).closest("form").submit()
-            swal('Poof! User has been deleted!', {
+            swal('Poof! data has been deleted!', {
               icon: 'success',
             });
           }

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ArsipController;
+use App\Http\Controllers\SuratController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,14 +24,14 @@ Route::group(['middleware' => ['auth']], function () {
         return view('home', ['users' => User::get(),]);
     });
     Route::resource('user', UserController::class);
+    Route::resource('arsip', SuratController::class);
+    Route::get('download', [SuratController::class, 'download'])->name('user.download');
 
 });
 
-Route::resource('arsip', ArsipController::class);
+
 Route::get('/profile', function(){
     return view('/profile');
 });
 
-// Route::get('/table',[ArsipController::class, 'index']);
-// Route::post('/create',[ArsipController::class, 'store']);
 

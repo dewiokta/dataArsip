@@ -47,7 +47,7 @@
                                         {{ session('status') }}
                                     </div>
                                     @endif
-                                    <form action="{{ route('login') }}" method="POST role="form">
+                                    <form action="{{ route('login') }}" method="POST" role="form">
                                         @csrf
                                         <div class="form-group mb-3">
                                             <div class="input-group input-group-merge input-group-alternative">
